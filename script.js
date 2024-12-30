@@ -3,13 +3,23 @@ let usedWords = [];
 let currentWord = null;
 
 async function loadWords() {
-  const response = await fetch('dataset.json');
-  words = await response.json();
+  try {
+    const response = await fetch('dataset.json');
+    if (!response.ok) {
+      throw new Error('Errore nel caricamento del dataset.');
+    }
+    words = await response.json();
+  } catch (error) {
+    console.error('Errore:', error);
+    alert('Impossibile caricare il dataset delle parole. Controlla il file dataset.json.');
+  }
 }
 
 function generateWord() {
   if (words.length === 0) {
     alert('Tutte le parole sono state estratte!');
+    currentWord = null;
+    document.getElementById('word-display').textContent = 'Nessuna parola disponibile.';
     return;
   }
 
@@ -18,7 +28,11 @@ function generateWord() {
   usedWords.push(currentWord);
 
   // Mostra la parola
-  document.getElementById('word-display').textContent = currentWord;
+  const wordDisplay = document.getElementById('word-display');
+  wordDisplay.textContent = currentWord;
+  wordDisplay.classList.add('active');
+
+  setTimeout(() => wordDisplay.classList.remove('active'), 300);
 }
 
 function handleCorrect() {
@@ -28,8 +42,7 @@ function handleCorrect() {
   }
 
   addToTable('correct-body', currentWord);
-  currentWord = null;
-  document.getElementById('word-display').textContent = 'Premi "Genera" per una nuova parola';
+  generateWord(); // Genera una nuova parola
 }
 
 function handleWrong() {
@@ -39,8 +52,7 @@ function handleWrong() {
   }
 
   addToTable('wrong-body', currentWord);
-  currentWord = null;
-  document.getElementById('word-display').textContent = 'Premi "Genera" per una nuova parola';
+  generateWord(); // Genera una nuova parola
 }
 
 function addToTable(tableId, word) {
