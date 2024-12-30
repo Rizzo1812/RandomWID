@@ -1,11 +1,36 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="it">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Generatore di Parole</title>
+  <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    Test
+  <div class="container">
+    <button id="generate-btn">Genera</button>
+    <div id="word-display">Premi "Genera" per iniziare</div>
+    <div class="action-buttons">
+      <button id="correct-btn" class="green-btn">✅ Corretto</button>
+      <button id="wrong-btn" class="red-btn">❌ Errato</button>
+    </div>
+    <table id="correct-table">
+      <thead>
+        <tr>
+          <th>Parole Corrette</th>
+        </tr>
+      </thead>
+      <tbody id="correct-body"></tbody>
+    </table>
+    <table id="wrong-table">
+      <thead>
+        <tr>
+          <th>Parole Errate</th>
+        </tr>
+      </thead>
+      <tbody id="wrong-body"></tbody>
+    </table>
+  </div>
+  <script src="script.js"></script>
 </body>
 </html>
