@@ -11,8 +11,8 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 100vh;
-    overflow: hidden;
+    margin-bottom: 5vh;
+    margin-top: 5vh;
   }
   
   .container {
