@@ -14,10 +14,19 @@
       <button id="correct-btn" class="green-btn">✅ Corretto</button>
       <button id="wrong-btn" class="red-btn">❌ Errato</button>
     </div>
+    <div class="timer-container">
+      <span>⏲️</span>
+      <div id="timer-display">120</div>
+      <div class="timer-buttons">
+        <button id="start-pause-btn">Avvia</button>
+        <button id="add-time-btn">+5 s</button>
+        <button id="remove-time-btn">-5 s</button>
+      </div>
+    </div>
     <table id="correct-table">
       <thead>
         <tr>
-          <th>Parole Corrette</th>
+          <th>PAROLE CORRETTE</th>
         </tr>
       </thead>
       <tbody id="correct-body"></tbody>
@@ -25,7 +34,7 @@
     <table id="wrong-table">
       <thead>
         <tr>
-          <th>Parole Errate</th>
+          <th>PAROLE ERRATE</th>
         </tr>
       </thead>
       <tbody id="wrong-body"></tbody>

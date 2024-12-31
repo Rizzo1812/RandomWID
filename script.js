@@ -64,6 +64,65 @@ function addToTable(tableId, word) {
   tableBody.appendChild(newRow);
 }
 
+let timer = 120;
+let timerInterval = null;
+let isRunning = false;
+
+// Aggiorna il display del timer
+function updateTimerDisplay() {
+  document.getElementById('timer-display').textContent = timer;
+}
+
+// Gestisci avvio/pausa del timer
+function toggleTimer() {
+  if (isRunning) {
+    clearInterval(timerInterval);
+    timerInterval = null;
+    isRunning = false;
+    document.getElementById('start-pause-btn').textContent = 'Avvia';
+  } else {
+    timerInterval = setInterval(() => {
+      if (timer > 0) {
+        timer--;
+        updateTimerDisplay();
+      } else {
+        clearInterval(timerInterval);
+        timerInterval = null;
+        isRunning = false;
+        document.getElementById('start-pause-btn').textContent = 'Avvia';
+        alert('Tempo scaduto!');
+      }
+    }, 1000);
+    isRunning = true;
+    document.getElementById('start-pause-btn').textContent = 'Pausa';
+  }
+}
+
+// Aggiungi 5 secondi
+function addTime() {
+  timer += 5;
+  updateTimerDisplay();
+}
+
+// Rimuovi 5 secondi
+function removeTime() {
+  if (timer > 5) {
+    timer -= 5;
+  } else {
+    timer = 0;
+  }
+  updateTimerDisplay();
+}
+
+// Event listeners per i pulsanti del timer
+document.getElementById('start-pause-btn').addEventListener('click', toggleTimer);
+document.getElementById('add-time-btn').addEventListener('click', addTime);
+document.getElementById('remove-time-btn').addEventListener('click', removeTime);
+
+// Inizializza il display del timer
+updateTimerDisplay();
+
+
 // Event listeners
 document.getElementById('generate-btn').addEventListener('click', generateWord);
 document.getElementById('correct-btn').addEventListener('click', handleCorrect);

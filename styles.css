@@ -2,6 +2,8 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    user-select: none;
+    -webkit-tap-highlight-color: transparent;
   }
   
   body {
@@ -41,7 +43,7 @@
   
   #word-display {
     margin: 20px 0;
-    font-size: 20px;
+    font-size: 40px;
     font-weight: bold;
     transition: color 0.3s ease, transform 0.3s ease;
   }
@@ -85,6 +87,41 @@
   .red-btn:hover {
     background-color: #c82333;
   }
+
+  .timer-container {
+    text-align: center;
+    margin-bottom: 20px;
+  }
+  
+  #timer-display {
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 10px;
+  }
+  
+  .timer-buttons button {
+    background-color: #007BFF;
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    font-size: 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    margin: 0 5px;
+  }
+
+  #add-time-btn {
+    background-color: #28a745;
+  }
+
+  #remove-time-btn {
+    background-color: #dc3545;
+  }
+  
+  .timer-buttons button:hover {
+    background-color: #0056b3;
+  }
+  
   
   table {
     width: 100%;
